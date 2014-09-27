@@ -4,8 +4,7 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
     function($http, $q, $location, identity, authorization, notifier, baseServiceUrl) {
         var farmsApi = baseServiceUrl + '/api/Farms/',
             clientsApi = baseServiceUrl + '/api/Clients/',
-            productsApi = baseServiceUrl + '/api/Product/',
-            headers = authorization.getAuthorizationHeader();
+            productsApi = baseServiceUrl + '/api/Product/';
 
         return {
             populateClientProfile: function (user) {
@@ -53,6 +52,8 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
                     notifier.error('Please login!');
                     $location.path('/');
                 } else {
+                    var headers = authorization.getAuthorizationHeader();
+
                     $http.put(farmsApi + 'Update?name=' + identity.getCurrentUser()['userName'], user, { headers: headers })
                         .success(function (data) {
                             deferred.resolve(data);
@@ -72,6 +73,8 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
                     notifier.error('Please login!');
                     $location.path('/');
                 } else {
+                    var headers = authorization.getAuthorizationHeader();
+
                     $http.put(clientsApi + 'Update?name=' + identity.getCurrentUser()['userName'], user, { headers: headers })
                         .success(function (data) {
                             deferred.resolve(data);
@@ -91,6 +94,8 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
                     notifier.error('Please login!');
                     $location.path('/');
                 } else {
+                    var headers = authorization.getAuthorizationHeader();
+
                     $http.post(productsApi + 'CreateProduct', product, { headers: headers })
                         .success(function (data) {
                             deferred.resolve(data);
@@ -106,10 +111,13 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
             getAllProducts : function() {
                 var deferred = $q.defer();
 
+
                 if (identity.getCurrentUser() === undefined) {
                     notifier.error('Please login!');
                     $location.path('/');
                 } else {
+                    var headers = authorization.getAuthorizationHeader();
+
                     $http.get(productsApi + 'All',
                         {
                             transformRequest: function (obj) {
@@ -141,6 +149,7 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
                     notifier.error('Please login!');
                     $location.path('/');
                 } else {
+                    var headers = authorization.getAuthorizationHeader();
                     $http.get(productsApi + 'ById/' + id,
                         {
                             transformRequest: function (obj) {
@@ -172,6 +181,7 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
                     notifier.error('Please login!');
                     $location.path('/');
                 } else {
+                    var headers = authorization.getAuthorizationHeader();
                     $http.put(productsApi + 'Update/' + product.Id, product, { headers: headers })
                         .success(function (data) {
                             deferred.resolve(data);
