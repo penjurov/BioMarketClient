@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="well">
+        <form name="product-addForm" class="form-horizontal">
+            <fieldset>
+                <legend>Add product</legend>
+                <div class="form-group">
+                    <label for="product-name" class="col-md-2 control-label">Product name</label>
+                    <div class="col-md-10">
+                        <input id="product-name" type="text" placeholder="Product name" ng-model="product.Name" required="required" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-price" class="col-md-2 control-label">Price</label>
+                    <div class="col-md-10">
+                        <input id="product-price" type="text" placeholder="Price" ng-model="product.Price" required="required" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <button ng-click="addProduct(product)" ng-disabled="signUpForm.$invalid" class="btn btn-primary">
+                        Add
+                    </button>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

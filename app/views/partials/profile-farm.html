@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="well">
+        <form name="farm-updateForm" class="form-horizontal">
+            <fieldset>
+                <legend>Update Farm</legend>
+                <div class="form-group">
+                    <label for="farm-name" class="col-md-2 control-label">Farm name</label>
+                    <div class="col-md-10">
+                        <input id="farm-name" type="text" placeholder="Farm name" ng-model="user.Name" required="required" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="farm-address" class="col-md-2 control-label">Address</label>
+                    <div class="col-md-10">
+                        <input id="farm-address" type="text" placeholder="Address" ng-model="user.Address" required="required" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="farm-phone" class="col-md-2 control-label">Phone</label>
+                    <div class="col-md-10">
+                        <input id="farm-phone" type="text" placeholder="Phone" ng-model="user.Phones" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="farm-owner" class="col-md-2 control-label">Owner</label>
+                    <div class="col-md-10">
+                        <input id="farm-owner" type="text" placeholder="Owner" ng-model="user.Owner" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="farm-latitude" class="col-md-2 control-label">Latitude</label>
+                    <div class="col-md-10">
+                        <input id="farm-latitude" type="text" placeholder="Latitude" ng-model="user.Latitude" disabled="disabled" class="form-control"/>
+                    </div>
+                    <label for="farm-longitude" class="col-md-2 control-label">Longitude</label>
+                    <div class="col-md-10">
+                        <input id="farm-longitude" type="text" placeholder="Longitude" ng-model="user.Longitude" disabled="disabled" class="form-control"/>
+                    </div>
+                    <div class="location">
+                        <a href="" class="btn btn-primary">Get location</a>
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <button ng-click="updateFarm(user)" ng-disabled="signUpForm.$invalid" class="btn btn-primary">
+                        Update
+                    </button>
+                    <a href="" class="btn btn-primary">Delete</a>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
