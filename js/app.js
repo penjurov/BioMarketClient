@@ -30,4 +30,4 @@ var app = angular.module('myApp', ['ngRoute', 'ngResource', 'ngCookies']).
             .otherwise({ redirectTo: '/' });
     }])
     .value('toastr', toastr)
-    .constant('baseServiceUrl', 'http://biomarket.apphb.com');
+    .constant('baseServiceUrl', 'http://biomarketserver.apphb.com');
