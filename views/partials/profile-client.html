@@ -20,15 +20,15 @@
                 <div class="form-group">
                     <label for="client-phone" class="col-md-2 control-label">Phone</label>
                     <div class="col-md-10">
-                        <input id="client-phone" type="text" placeholder="Phone" ng-model="user.Phone" required="required" class="form-control"/>
+                        <input id="client-phone" type="text" placeholder="Phone" ng-model="user.Phone" class="form-control"/>
                     </div>
                 </div>
 
                 <div class="pull-right">
-                    <button ng-click="updateClient(user)" ng-disabled="signUpForm.$invalid" class="btn btn-primary">
+                    <button ng-click="updateClient(user)" ng-disabled="client-updateForm.$invalid" class="btn btn-primary">
                         Update
                     </button>
-                    <a href="" class="btn btn-primary">Delete</a>
+                    <a href="" ng-click="deleteClient(user)" class="btn btn-primary">Close Profile</a>
                     <a href="#/" class="btn btn-primary">Cancel</a>
                 </div>
             </fieldset>

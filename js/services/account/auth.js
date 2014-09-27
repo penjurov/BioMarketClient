@@ -10,8 +10,9 @@ app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'baseServiceUrl
             $http.post(usersApi + '/Register', user)
                 .success(function() {
                     deferred.resolve();
-                }, function(response) {
-                    deferred.reject(response);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
                 });
 
             return deferred.promise;
@@ -26,8 +27,11 @@ app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'baseServiceUrl
                         deferred.resolve(true);
                     }
                     else {
-                        deferred.resolve(false);
+                        deferred.reject(response);
                     }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
                 });
 
             return deferred.promise;
@@ -40,6 +44,9 @@ app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'baseServiceUrl
                 .success(function() {
                     identity.setCurrentUser(undefined);
                     deferred.resolve();
+                })
+                .error(function (err) {
+                    deferred.reject(err);
                 });
 
             return deferred.promise;

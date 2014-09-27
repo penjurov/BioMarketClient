@@ -4,9 +4,9 @@
             <fieldset>
                 <legend>Update product</legend>
                 <div class="form-group">
-                    <label for="product-name" class="col-md-2 control-label">Choose product:</label>
+                    <label for="choose-product" class="col-md-2 control-label">Choose product:</label>
                     <div class="col-md-10">
-                        <select class="form-control" ng-model="selectedProduct" ng-change="change()">
+                        <select id="choose-product" class="form-control" ng-model="selectedProduct" ng-change="change()">
                             <option ng-repeat="selectedProduct in products" value="{{selectedProduct.Id}}">{{ selectedProduct.Name }}</option>
                         </select>
                     </div>
@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label for="product-name" class="col-md-2 control-label">Product name</label>
                     <div class="col-md-10">
-                        <input value ="selectedProduct" id="product-name" type="text" placeholder="Product name" ng-model="product.Name" required="required" class="form-control"/>
+                        <input id="product-name" type="text" placeholder="Product name" ng-model="product.Name" required="required" class="form-control"/>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="pull-right">
-                    <button ng-click="editProduct()" ng-disabled="signUpForm.$invalid" class="btn btn-primary">
+                    <button ng-click="editProduct()" ng-disabled="product-editForm.$invalid" class="btn btn-primary">
                         Update
                     </button>
                     <a href="#/" class="btn btn-primary">Delete</a>

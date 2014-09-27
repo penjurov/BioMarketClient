@@ -27,7 +27,12 @@ var app = angular.module('myApp', ['ngRoute', 'ngResource', 'ngCookies']).
                 templateUrl: 'views/partials/edit-product.html',
                 controller: 'EditProductCtrl'
             })
+            .when('/add-offer', {
+                templateUrl: 'views/partials/add-offer.html',
+                controller: 'AddOfferCtrl'
+            })
             .otherwise({ redirectTo: '/' });
     }])
     .value('toastr', toastr)
-    .constant('baseServiceUrl', 'http://biomarketserver.apphb.com');
+    .constant('baseServiceUrl', 'http://localhost:6022');
+    //.constant('baseServiceUrl', 'http://biomarketserver.apphb.com');

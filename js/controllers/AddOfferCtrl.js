@@ -1,16 +1,16 @@
 'use strict';
 
-app.controller('FarmProfileCtrl', ['$scope', '$location', 'bioFarm', 'notifier', 'identity',
-    function FarmProfileCtrl($scope, $location, bioFarm, notifier, identity) {
-        (function populateFarmProfile() {
+app.controller('AddOfferCtrl', ['$scope', '$location', 'bioFarm', 'notifier', 'identity',
+    function AddOfferCtrl($scope, $location, bioFarm, notifier, identity) {
+        (function getProducts() {
             if (identity.getCurrentUser() === undefined) {
                 notifier.error('Please login!');
                 $location.path('/');
             } else {
                 bioFarm
-                    .populateFarmProfile()
+                    .getAllProducts()
                     .then(function (data) {
-                        $scope.user = data;
+                        $scope.products = data;
                     }, function (err) {
                         notifier.error(err.Message);
                         $location.path('/');
@@ -18,21 +18,32 @@ app.controller('FarmProfileCtrl', ['$scope', '$location', 'bioFarm', 'notifier',
             }
         })();
 
-        $scope.updateFarm = function(farm) {
+        $scope.change = function() {
+            if (identity.getCurrentUser() === undefined) {
+                notifier.error('Please login!');
+                $location.path('/');
+            } else {
+                $scope.offer = {
+                    ProductId: $scope.selectedProduct
+                }
+            }
+        };
+
+        $scope.addOffer = function() {
             if (identity.getCurrentUser() === undefined) {
                 notifier.error('Please login!');
                 $location.path('/');
             } else {
                 bioFarm
-                    .updateFarm(farm)
+                    .addOffer($scope.offer)
                     .then(function () {
-                        notifier.success('Update successful!');
+                        notifier.success('Added successful!');
                         $location.path('/');
                     }, function (err) {
                         notifier.error(err.Message);
                         $location.path('/');
                     })
             }
-        }
+        };
     }]);
 

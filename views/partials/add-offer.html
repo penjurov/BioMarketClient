@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="well">
+        <form name="offer-addForm" class="form-horizontal">
+            <fieldset>
+                <legend>Add offer</legend>
+                <div class="form-group">
+                    <label for="offer-product" class="col-md-2 control-label">Choose product:</label>
+                    <div class="col-md-10">
+                        <select id="offer-product" class="form-control" ng-model="selectedProduct" ng-change="change()">
+                            <option ng-repeat="selectedProduct in products" value="{{selectedProduct.Id}}">{{ selectedProduct.Name }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="offer-quantity" class="col-md-2 control-label">Quantity</label>
+                    <div class="col-md-10">
+                        <input id="offer-quantity" type="text" placeholder="Quantity" ng-model="offer.Quantity" required="required" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="offer-photo" class="col-md-2 control-label">Photo</label>
+                    <div class="col-md-10">
+                        <input id="offer-photo" type="text" placeholder="Photo" ng-model="offer.Photo" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <button ng-click="addOffer()" ng-disabled="offer-addForm.$invalid" class="btn btn-primary">
+                        Add
+                    </button>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

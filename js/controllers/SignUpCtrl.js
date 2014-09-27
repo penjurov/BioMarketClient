@@ -5,6 +5,8 @@ app.controller('SignUpCtrl', ['$scope', '$location', 'auth', 'notifier', functio
         auth.signup(user).then(function() {
             notifier.success('Registration successful!');
             $location.path('/');
+        }, function(err) {
+            notifier.error(err.Message);
         })
     }
 }]);
