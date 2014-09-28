@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('myApp', ['ngRoute', 'ngResource', 'ngCookies']).
+var app = angular.module('myApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap', 'google-maps']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/register-client', {
@@ -31,8 +31,16 @@ var app = angular.module('myApp', ['ngRoute', 'ngResource', 'ngCookies']).
                 templateUrl: 'views/partials/add-offer.html',
                 controller: 'AddOfferCtrl'
             })
+            .when('/view-offers', {
+                templateUrl: 'views/partials/view-offers.html',
+                controller: 'ViewOffersCtrl'
+            })
+            .when('/map', {
+                templateUrl: 'views/partials/map.html',
+                controller: 'MapCtrl'
+            })
             .otherwise({ redirectTo: '/' });
     }])
     .value('toastr', toastr)
-    //.constant('baseServiceUrl', 'http://localhost:6022');
-    .constant('baseServiceUrl', 'http://biomarketserver.apphb.com');
+    .constant('baseServiceUrl', 'http://localhost:6022');
+    //.constant('baseServiceUrl', 'http://biomarketserver.apphb.com');

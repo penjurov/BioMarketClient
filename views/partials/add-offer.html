@@ -22,7 +22,10 @@
                 <div class="form-group">
                     <label for="offer-photo" class="col-md-2 control-label">Photo</label>
                     <div class="col-md-10">
-                        <input id="offer-photo" type="text" placeholder="Photo" ng-model="offer.Photo" class="form-control"/>
+                        <input id="offer-photo" type="text" placeholder="Photo" ng-model="offer.ProductPhoto" class="form-control"/>
+                    </div>
+                    <div class="col-md-10 pull-right image-container">
+                        <img src="{{offer.ProductPhoto}}" id="add-offer-image">
                     </div>
                 </div>
 

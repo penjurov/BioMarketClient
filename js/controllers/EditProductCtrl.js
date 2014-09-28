@@ -55,4 +55,19 @@ app.controller('EditProductCtrl', ['$scope', '$location', 'bioFarm', 'notifier',
                     })
             }
         };
+
+        $scope.deleteProduct = function(product) {
+            if (identity.getCurrentUser() === undefined) {
+                notifier.error('Please login!');
+                $location.path('/');
+            } else {
+                bioFarm
+                    .deleteProduct(farm)
+                    .then(function () {
+                        $scope.product = null;
+                    }, function (err) {
+                        notifier.error(err.Message);
+                    });
+            }
+        };
     }]);

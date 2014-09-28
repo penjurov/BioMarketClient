@@ -48,6 +48,20 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
 
                 return deferred.promise;
             },
+            deleteFarm: function(user) {
+                var deferred = $q.defer();
+                var headers = authorization.getAuthorizationHeader();
+
+                $http.put(farmsApi + 'Delete?name=' + identity.getCurrentUser()['userName'], user, { headers: headers })
+                    .success(function () {
+                        deferred.resolve();
+                    })
+                    .error(function (err) {
+                        deferred.reject(err);
+                    });
+
+                return deferred.promise;
+            },
             updateClient: function(user) {
                 var deferred = $q.defer();
                 var headers = authorization.getAuthorizationHeader();
@@ -156,11 +170,52 @@ app.factory('bioFarm', ['$http', '$q', '$location', 'identity', 'authorization',
 
                 return deferred.promise;
             },
+            deleteProduct: function(product) {
+                var deferred = $q.defer();
+                var headers = authorization.getAuthorizationHeader();
+
+                $http.put(productsApi + 'Delete/' + product.Id, product, { headers: headers })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (err) {
+                        deferred.reject(err)
+                    });
+
+                return deferred.promise;
+            },
             addOffer: function(offer) {
                 var deferred = $q.defer();
                 var headers = authorization.getAuthorizationHeader();
 
                 $http.post(offersApi + 'Add', offer, { headers: headers })
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (err) {
+                        deferred.reject(err)
+                    });
+
+                return deferred.promise;
+            },
+            getAllOffers: function() {
+                var deferred = $q.defer();
+
+                $http.get(offersApi + 'All')
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (err) {
+                        deferred.reject(err)
+                    });
+
+                return deferred.promise;
+            },
+            buyProduct: function(id) {
+                var deferred = $q.defer();
+                var headers = authorization.getAuthorizationHeader();
+
+                $http.put(offersApi + 'Buy/' + id, {}, { headers: headers })
                     .success(function (data) {
                         deferred.resolve(data);
                     })
